@@ -1,5 +1,8 @@
 const setupGameBoard = () => {
-  const board = document.querySelector('.board');
+  const body = document.querySelector('body') ;
+  const board = document.createElement('div');
+  board.classList.add('board') ;
+  body.appendChild(board);
   const gameON = gameOn();
   for(let i=0 ; i<9 ; i++){
     const button = document.createElement('button');
@@ -57,6 +60,12 @@ function resetGame(winner){
   const body = document.querySelector('body');
   winnerNode.textContent = `Player${winner} wins!`
   body.appendChild(winnerNode) ;
+  setTimeout(function(){
+    // const board = document.querySelector('.board');
+    // board.remove();
+    body.textContent = '' ;
+    setupGameBoard() ;
+  }, 1500) ;
 }
 
 setupGameBoard();
